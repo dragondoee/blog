@@ -1,0 +1,100 @@
+/* Main */
+
+:root {
+  --darkRed: #4F0000;
+  --lightPink: #F4D1D1;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+#bandeauTxt {
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+}
+
+hr {
+  margin-bottom: 10px;
+}
+
+/* Content */
+
+main a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+/* Zone Filtre */
+
+.filtre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+select {
+  border: var(--darkRed) 2px solid;
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.filtre a {
+  font-family: "Itim", cursive, Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+}
+
+details {
+  width: 150px;
+  height: 20px;
+  overflow: visible;
+  z-index: 2;
+}
+
+details div {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: var(--darkRed) 1px solid;
+}
+
+/* Liste Boisson */
+
+.liste-boissons {
+  margin-top: 10vh;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.liste-boissons div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: auto;
+  width: 80%;
+  margin-right: auto;
+  /* border: var(--darkRed) 1px solid; */
+  border: var(--lightPink) 4px solid;
+  /* background-color: var(--lightPink); */
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.liste-boissons img {
+  width: 150px;
+  border-radius: 5px;
+}
+
+.txt-boisson {
+  width: 60%;
+}

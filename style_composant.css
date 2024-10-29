@@ -1,0 +1,49 @@
+
+/* Header */
+
+.composant-header {
+  font-family: "Iceland", sans-serif, Impact;
+  background-color: #F4D1D1;
+  color: #4F0000;
+  width: 100%;
+  position: relative;
+  padding: 0 50px;
+}
+
+.composant-header img {
+  margin-top: 20px;
+  width: 300px;
+}
+
+.composant-header nav {
+  display: flex;
+  align-items: center;
+}
+
+.composant-header ul {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-around;
+  width: 40%;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 1.3rem;
+}
+
+.composant-header a {
+  text-decoration: none;
+  margin-right: auto;
+  color: #4F0000;
+}
+
+.composant-header a:hover{
+  text-decoration:underline;
+}
+
+.composant-header li {
+  list-style-type: none;
+}
+
+
