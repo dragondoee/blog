@@ -94,24 +94,26 @@ function GetAllCommentairesBillet($id_billet)
 }
 ;
 
-function insertCommentaire($objet,$auteur, $com, $id_billet)
+function insertCommentaire($auteur, $com, $id_billet)
 {
     global $db;
-    $requete = "INSERT INTO commentaire VALUES (NULL, :objet, :auteur, :date ,:com, :billet);";
+    $requete = "INSERT INTO commentaire (auteur, com, billet) VALUES (:auteur, :com, :billet);";
     $stmt = $db->prepare($requete);
-    $stmt->bindParam(':objet', $objet, PDO::PARAM_STR);
-    $stmt->bindParam(':auteur', $auteur, PDO::PARAM_STR);
-    $dateSc = time();
-    $date = date( "Y-m-d H:i:s", $dateSc );
-    $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+    $stmt->bindParam(':auteur', $auteur, PDO::PARAM_INT);
     $stmt->bindParam(':com', $com, PDO::PARAM_STR);
-    $stmt->bindParam(':billet', $id_billet, PDO::PARAM_STR);
+    $stmt->bindParam(':billet', $id_billet, PDO::PARAM_INT);
     $stmt->execute();
 }
 ;
 
-function deleteCommentaire()
+function deleteCommentaire($id_com)
 {
+    global $db;
+    $requete = "DELETE FROM commentaire WHERE id_com=:id_com";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id_com', $id_com, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
 
@@ -156,17 +158,15 @@ function GetALLBillets()
 function insertBillet($titre, $date, $text, $img)
 {
     global $db;
-    $requete = "INSERT INTO billet VALUES (NULL, :titre, :date, :text, :img);";
+    $requete = "INSERT INTO billet(titre,text) VALUES (:titre, :text);";
     $stmt = $db->prepare($requete);
     $stmt->bindParam(':titre', $titre, PDO::PARAM_STR);
-    $stmt->bindParam(':date', $date, PDO::PARAM_STR);
     $stmt->bindParam(':text', $text, PDO::PARAM_STR);
-    $stmt->bindParam(':img', $img, PDO::PARAM_STR);
     $stmt->execute();
 }
 ;
 
-// TODO : A tester
+
 function deleteBillet($id_billet)
 {
     global $db;
@@ -238,7 +238,7 @@ function inscription($infoLogin)
 function addCom($infoCom, $id_billet)// ajouter un commentaire
 {
     $user = getUser($_SESSION["login"]);
-    insertCommentaire($infoCom["objet"], $user["id_user"], $infoCom["com"], $id_billet);
+    insertCommentaire($user["id_user"], $infoCom["addCom"], $id_billet);
 }
 ;
 

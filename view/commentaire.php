@@ -1,16 +1,15 @@
 <?php
 if ($com) {
-    if (isset($_SESSION["login"]) && $_GET["com"] != "add") {
-        ?>
-        <a href="index.php?action=detail&com=add&id_billet=<?= $result["id_billet"]; ?>">Ajouter un commentaire</a>
-        <?php
+    if (isset($_SESSION["login"])) {
+    ?>
+    <br>
+    <form method="POST">
+            <label for="addCom">Commentaire</label>
+            <textarea name="addCom" id="addCom" cols="100" rows="2"></textarea>
+            <input type="submit">
+    </form>
+    <?php
     }
-    if (isset($_SESSION["login"]) && $_GET["com"] == "add") {
-        ?>
-        <a href="index.php?action=detail&com=true&id_billet=<?= $result["id_billet"]; ?>">Annuler</a>
-        <?php
-    }
-    ;
     if ($com) {
         foreach ($com as $commentaire) {
             ?>
@@ -18,19 +17,19 @@ if ($com) {
             <span class="liste-boissons">
                 <div>
                     <span>
-                        <!-- <img src="profil_<?= $user["id_user"]; ?>" alt="photo de profil"> -->
-                        <!-- <p><strong><?= $user["login"]; ?></strong></p> -->
+                        <img src="img/profil/<?= $_SESSION["login"] ?>" alt="photo de profil de <?=$_SESSION["login"]?>">
+                        <p><strong><?= $_SESSION["login"] ?></strong></p>
                     </span>
                     <span>
-                        <h2><?= $commentaire["objet"]; ?></h2>
                         <p><?= $commentaire["com"]; ?></p>
                     </span>
                     <p><strong><?= $commentaire["date"]; ?></strong></p>
                     <?php
+                    if (isset($_SESSION["login"])) {
                     if ($_SESSION["login"] == "admin") {
-                        echo "<a href='index.php?action=detail&gestion=com&supr={$commentaire["id_com"]}'> Supprimer </a><br>";
-                        echo "<a href='index.php?action=detail&gestion=com&modif={$commentaire["id_com"]}'> Modifier </a><br>";
-                    }
+                        echo "<a href='index.php?action=detail&com=true&supr={$commentaire["id_com"]}&id_billet={$billet["id_billet"]}'> Supprimer </a><br>";
+                        echo "<a href='index.php?action=detail&com=true&modif={$commentaire["id_com"]}&id_billet={$billet["id_billet"]}'> Modifier </a><br>";
+                    }}
                     ?>
                 </div>
 

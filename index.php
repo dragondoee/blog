@@ -49,22 +49,41 @@ require "view/header.php";
                     break;
                 // Detail
                 case "detail":
-                    $result = GetBillet($_GET["id_billet"]);
-                    if (GetAllCommentairesBillet($result["id_billet"])) {
-                        $com = GetAllCommentairesBillet($result["id_billet"]);
+                    if (isset($_GET["supr"])) {
+                        deleteBillet($_GET["supr"]);
+                    }
+                    if (isset($_GET["modif"])) {
+                        if(isset($_POST["texteBillet"])){
+                           updateBillet();
+                        }
+                        require "view/form_billet.php";
+                    }
+                    $billet = GetBillet($_GET["id_billet"]);
+                    if (GetAllCommentairesBillet($billet["id_billet"])) {
+                        $com = GetAllCommentairesBillet($billet["id_billet"]);
 
                     } else {
                         $com = NULL;
                     }
-                    require "view/detail.php";
+                    if (!isset($_GET["modif"])) {
+                        require "view/detail.php";
+
+                    }
                     // Commentaires
                     if (isset($_GET["com"])) {
-                        if ($_GET["com"] == "add") {
-                            if (isset($_POST["objet"])) {
-                                addCom($_POST, $result["id_billet"]);
-                            }
-                            require "view/form_com.php";
+                        if (isset($_POST["addCom"])) {
+                            // ! Ajout à l'infini
+                            addCom($_POST, $billet["id_billet"]);
+                            $_POST = array();
                         }
+                        if (isset($_GET["supr"])) {
+                            deleteCommentaire($_GET["supr"]);
+                        }
+                        if (isset($_GET["modif"])) {
+
+                        }
+                        $users=GetAllUsers();
+                        $com = GetAllCommentairesBillet($billet["id_billet"]);
                         require "view/commentaire.php";
                     }
                     break;
@@ -72,6 +91,15 @@ require "view/header.php";
                 case "profil":
                     $user = getUser($_SESSION["login"]);
                     require "view/profil.php";
+                    break;
+                // Gestion utilisateur
+                case "gestionUser":
+                    if (isset($_GET["supr"])) {
+                        deleteUser($_GET["supr"]);
+                    }
+                    ;
+                    $users = GetAllUsers();
+                    require "view/gestionUser.php";
                     break;
                 // deconnexion
                 case "deconnexion":
@@ -104,44 +132,6 @@ require "view/header.php";
             <?php
         }
 
-        if (isset($_GET["gestion"])) {
-            $gestion = $_GET["gestion"];
-
-            switch ($gestion) {
-                // User
-                case "user":
-                    if (isset($_GET["supr"])) {
-                        // deleteUser($_GET["supr"]);
-                    }
-                    ;
-                    $users = GetAllUsers();
-                    require "view/gestionUser.php";
-                    break;
-                // Billet
-                case "billet":
-                    if (isset($_GET["supr"])) {
-                        // deleteUser($_GET["supr"]);
-                    }
-                    ;
-                    if (isset($_GET["modif"])) {
-                        // deleteUser($_GET["supr"]);
-                    }
-                    ;
-                    break;
-                // Commentaire
-                case "com":
-                    if (isset($_GET["supr"])) {
-                        // deleteUser($_GET["supr"]);
-                    }
-                    ;
-                    if (isset($_GET["modif"])) {
-                        // deleteUser($_GET["supr"]);
-                    }
-                    ;
-                    break;
-            }
-        }
-        ;
 
         ?>
     </main>
@@ -153,18 +143,13 @@ require "view/header.php";
 
 <!-- TODO
 
-- Com : afficher les infos user
+- Com : afficher les infos user 
 - Profil : ajout de photo
 
 - Back office :
-Commentaires
-Publication
+Commentaires : modifier
+Publication : Ajouter, Modifier
 
 - CSS
 
-supr billet
-echo "<a href='index.php?action=gestion&gestion=billet&supr={$billet["id_billet"]}'> Supprimer </a><br>";
-
-supr billet
-echo "<a href='index.php?action=gestion&gestion=billet&supr={$billet["id_billet"]}'> Supprimer </a><br>";
 -->

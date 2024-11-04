@@ -9,7 +9,7 @@
             if (isset($_SESSION["login"])) {
                 if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
                     ?>
-                    <li><a href="index.php?action=gestion&gestion=user">Liste Utilisateurs</a></li>
+                    <li><a href="index.php?action=gestionUser">Liste Utilisateurs</a></li>
                     <?php
                 } ?>
                 <li><a href="index.php?action=profil">Profil</a></li>
