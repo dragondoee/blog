@@ -9,10 +9,7 @@ require "view/header.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Style -->
-    <link rel="stylesheet" href="style-salle.css">
-    <link rel="stylesheet" href="style-boisson.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style_composant.css">
     <!--  -->
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <title>Blog</title>
@@ -114,7 +111,7 @@ require "view/header.php";
             }
             ?>
             <h1 id="content">Blog Emilie</h1>
-            <span class="liste-salles">
+            <span class="liste-billet">
                 <?php
 
 

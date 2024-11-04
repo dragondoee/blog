@@ -4,12 +4,12 @@
   box-sizing: border-box;
 }
 
-:root{
-  --darkRed :#4F0000;
-  --lightPink : #F4D1D1;
+:root {
+  --darkRed: #303030;
+  --lightPink: #a0a0a0;
 }
 
-/* FONT */
+/* ======================================================= FONT ======================================================= */
 
 .iceland-regular {
   font-family: "Iceland", sans-serif;
@@ -24,7 +24,7 @@
 }
 
 
-/* BODY */
+/* ======================================================= BODY ======================================================= */
 
 body {
   position: relative;
@@ -33,7 +33,7 @@ body {
 
 
 
-/* Générale */
+/* ======================================================= Générale ======================================================= */
 
 hr {
   width: 85%;
@@ -42,34 +42,126 @@ hr {
   border-color: var(--darkRed);
 }
 
+.pp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
 
-h1, h2, h3, h4, a, button, label, legend{
-  font-family: "Iceland", sans-serif, Impact, Impact,'Arial Narrow Bold', sans-serif;
+
+/* ======================================================= Header ======================================================= */
+
+.composant-header {
+  font-family: "Iceland", sans-serif, Impact;
+  background-color: var(--lightPink);
+  color: var(--darkRed);
+  width: 100%;
+  position: relative;
+  padding: 0 50px;
+}
+
+.composant-header img {
+  margin-top: 20px;
+  width: 300px;
+}
+
+.composant-header nav {
+  display: flex;
+  align-items: center;
+}
+
+.composant-header ul {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-around;
+  width: 40%;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 1.3rem;
+}
+
+.composant-header a {
+  text-decoration: none;
+  margin-right: auto;
   color: var(--darkRed);
 }
 
-p{
-  font-family: "Itim", cursive, Arial, Helvetica, sans-serif;
-  font-size: 1.15rem;
+.composant-header a:hover {
+  text-decoration: underline;
 }
 
-input, select, details{
-  font-family: "Itim", cursive, Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+.composant-header li {
+  list-style-type: none;
 }
 
-input{
-  border: var(--darkRed) 1px solid;
-  border-radius: 4px;
+/* ======================================================= Accueil ======================================================= */
+
+h1{
+  text-align: center;
 }
 
-label, legend{
-  font-size: 1.4rem;
+.liste-billet{
+  display: flex;
+  flex-direction: row;
 }
 
-/* Bouton style */
 
-.button-style, button {
+
+/* ======================================================= Carte Billet ======================================================= */
+
+.billet {
+  width: 60%;
+  max-width: 750px;
+  border: solid var(--darkRed) 1px;
+  margin:  50px auto ;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.billet div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* ======================================================= Commentaire ======================================================= */
+
+.liste-com {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  align-items: center;
+  border: solid var(--darkRed) 1px;
+  margin: 20px;
+  margin-left: 2%;
+  padding: 20px;
+  border-radius: 15px;
+  width: 60%;
+}
+
+.top-part-com {
+  display: flex;
+  gap: 10px;
+}
+
+.admin-button-com {
+  margin-left: auto;
+}
+
+.content-com p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+/* ======================================================= Bouton style ======================================================= */
+
+.button-style,
+button {
   text-decoration: none;
   color: #fff;
   font-size: 1.2rem;
@@ -85,22 +177,23 @@ label, legend{
   z-index: 2;
 }
 
-.small-button{
+.small-button {
   font-size: 1.1rem;
   border-radius: 10px;
   padding: 5px 10px;
   width: 150px;
 }
 
-.centerElem{
+.centerElem {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Hover Button */
 
-.button-style:hover, .small-button:hover, button:hover{
+.button-style:hover,
+.small-button:hover,
+button:hover {
   color: var(--darkRed);
   text-align: center;
   background-color: var(--lightPink);
@@ -108,7 +201,8 @@ label, legend{
   transform: scale(1.05);
 }
 
-/* Skip Link */
+/* ======================================================= A11y ======================================================= */
+
 .skip-link {
   color: var(--darkRed);
   padding: 0.625em 0.9375em;
@@ -138,7 +232,6 @@ label, legend{
   z-index: 999;
 }
 
-/* SR-Only */
 .sr-only {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important;
@@ -151,21 +244,3 @@ label, legend{
   width: 1px !important;
   white-space: nowrap !important;
 }
-
-/* Focus */
-/* :focus-visible {
-  padding: 10px;
-  text-align: center;
-  border: #4F0000;
- 2px solid;
-} */
-
-/* RESPONSIVE */
-
-/* @media(max-width:700px) {
-
-  body{
-    background-color: #291503;
-  }
-  
-} */
