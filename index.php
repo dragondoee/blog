@@ -50,8 +50,8 @@ require "view/header.php";
                         deleteBillet($_GET["supr"]);
                     }
                     if (isset($_GET["modif"])) {
-                        if(isset($_POST["texteBillet"])){
-                           updateBillet();
+                        if (isset($_POST["texteBillet"])) {
+                            updateBillet();
                         }
                         require "view/form_billet.php";
                     }
@@ -69,7 +69,6 @@ require "view/header.php";
                     // Commentaires
                     if (isset($_GET["com"])) {
                         if (isset($_POST["addCom"])) {
-                            // ! Ajout à l'infini
                             addCom($_POST, $billet["id_billet"]);
                             $_POST = array();
                         }
@@ -79,9 +78,12 @@ require "view/header.php";
                         if (isset($_GET["modif"])) {
 
                         }
-                        $users=GetAllUsers();
+
                         $com = GetAllCommentairesBillet($billet["id_billet"]);
-                        require "view/commentaire.php";
+                        foreach ($com as $commentaire) {
+                            $userCom = getUserId($commentaire["auteur"])["login"];
+                            require "view/commentaire.php";
+                        }
                     }
                     break;
                 // Profil
