@@ -23,7 +23,12 @@
             <?php
         }
     } else {
-        echo "Aucun commentaire";
+        
+        if (isset($_SESSION["login"])) {
+            echo "Aucun commentaire, soyez le 1er";
+        } else {
+            echo "Aucun commentaire";
+        }
     }
     ;
     ?>

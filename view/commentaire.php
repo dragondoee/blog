@@ -1,24 +1,3 @@
-<!-- 
-
- Pour régler le probème des users :
- Mettre la boucle à l'exterieur, dans le contrôleur et appeler la fonction qui va bien
- Le formulaire : le mettre dans une autre vu et l'appeler avant la boucle
-
--->
-
-<?php
-if (isset($_SESSION["login"])) {
-    ?>
-    <br>
-    <form method="POST">
-        <label for="addCom">Commentaire</label>
-        <textarea name="addCom" id="addCom" cols="100" rows="2"></textarea>
-        <input type="submit">
-    </form>
-    <?php
-}
-        ?>
-
         <span>
             <div class="liste-com">
 

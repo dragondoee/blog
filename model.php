@@ -60,12 +60,12 @@ function deleteUser($login)
 }
 ;
 
+// TODO : A revoir
 function deconnexion()
 {
-    session_start();
     session_destroy();
-    header("location: index.php");
     // ! Utilisation du header
+    header("location: index.php");
 }
 ;
 
@@ -106,6 +106,13 @@ function insertCommentaire($auteur, $com, $id_billet)
 }
 ;
 
+function addCom($infoCom, $id_billet)// ajouter un commentaire
+{
+    $user = getUser($_SESSION["login"]);
+    insertCommentaire($user["id_user"], $infoCom["addCom"], $id_billet);
+}
+;
+
 function deleteCommentaire($id_com)
 {
     global $db;
@@ -117,6 +124,7 @@ function deleteCommentaire($id_com)
 }
 ;
 
+// TODO
 function updateCommentaire()
 {
 
@@ -139,7 +147,7 @@ function GetBillet($id_billet)
 function Get3Billets()
 {
     global $db;
-    $requete = "SELECT * FROM billet LIMIT 3";
+    $requete = "SELECT * FROM billet ORDER BY date DESC LIMIT 3";
     $stmt = $db->query($requete);
     return $result = $stmt->fetchall(PDO::FETCH_ASSOC);
 }
@@ -154,8 +162,7 @@ function GetALLBillets()
 }
 ;
 
-// TODO : A tester
-function insertBillet($titre, $date, $text, $img)
+function insertBillet($titre,$text)
 {
     global $db;
     $requete = "INSERT INTO billet(titre,text) VALUES (:titre, :text);";
@@ -178,9 +185,17 @@ function deleteBillet($id_billet)
 }
 ;
 
-function updateBillet()
+// TODO : tester
+function updateBillet($titre,$texte,$id_billet)
 {
-
+    global $db;
+    $requete = "UPDATE billet SET titre = :titre , text=:text WHERE id_billet=:id_billet";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id_billet', $id_billet, PDO::PARAM_INT);
+    $stmt->bindParam(':titre', $titre, PDO::PARAM_STR);
+    $stmt->bindParam(':text', $texte, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
 
@@ -235,18 +250,7 @@ function inscription($infoLogin)
 }
 ;
 
-function addCom($infoCom, $id_billet)// ajouter un commentaire
-{
-    $user = getUser($_SESSION["login"]);
-    insertCommentaire($user["id_user"], $infoCom["addCom"], $id_billet);
-}
-;
 
-function addBillet()// ajouter un billet
-{
-
-}
-;
 
 function addphoto()// ajouter une photo de profil
 {

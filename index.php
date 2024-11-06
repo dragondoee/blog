@@ -44,16 +44,34 @@ require "view/header.php";
                     }
                     require "view/inscription.php";
                     break;
+                // Formulaire billet
+                case "form_billet":
+                    if (isset($_GET["modif"])) {
+                        $id_billet = $_GET["modif"];
+                        $billet = GetBillet($id_billet);
+                    }
+                    require "view/form_billet.php";
+                    break;
+                // Ajouter un billet
+                case "addBillet":
+                    if (isset($_POST["texteBillet"])) {
+                        insertBillet($_POST["titre"], $_POST["texteBillet"]);
+                        $result = Get3Billets();
+                        require "view/default.php";
+                    }
+                    break;
+                // Modifier un billet
+                case "ModifBillet":
+                    if (isset($_POST["texteBillet"])) {
+                        updateBillet($_POST["titre"], $_POST["texteBillet"], $_POST["id_billet"]);
+                        $result = Get3Billets();
+                        require "view/default.php";
+                    }
+                    break;
                 // Detail
                 case "detail":
                     if (isset($_GET["supr"])) {
                         deleteBillet($_GET["supr"]);
-                    }
-                    if (isset($_GET["modif"])) {
-                        if (isset($_POST["texteBillet"])) {
-                            updateBillet();
-                        }
-                        require "view/form_billet.php";
                     }
                     $billet = GetBillet($_GET["id_billet"]);
                     if (GetAllCommentairesBillet($billet["id_billet"])) {
@@ -64,6 +82,9 @@ require "view/header.php";
                     }
                     if (!isset($_GET["modif"])) {
                         require "view/detail.php";
+                        if (isset($_SESSION["login"])) {
+                            require "view/form_com.php";
+                        }
 
                     }
                     // Commentaires
@@ -78,7 +99,6 @@ require "view/header.php";
                         if (isset($_GET["modif"])) {
 
                         }
-
                         $com = GetAllCommentairesBillet($billet["id_billet"]);
                         foreach ($com as $commentaire) {
                             $userCom = getUserId($commentaire["auteur"])["login"];
@@ -107,28 +127,8 @@ require "view/header.php";
 
             }
         } else {
-            if (isset($_SESSION["login"])) {
-                echo "Bonjour {$_SESSION["login"]}  <br><br>";
-
-            }
-            ?>
-            <h1 id="content">Blog Emilie</h1>
-            <span class="liste-billet">
-                <?php
-
-
-                if ($result = Get3Billets()) {
-                    foreach ($result as $billet) {
-                        require "view/carte_billet.php";
-                    }
-                    ;
-                } else {
-                    echo "Aucun résultat trouvé";
-                }
-                ?>
-            </span>
-            <a href="index.php?action=archives " class="button-style centerElem">Découvrir les autres billets</a>
-            <?php
+            $result = Get3Billets();
+            require "view/default.php";
         }
 
 
@@ -142,12 +142,11 @@ require "view/header.php";
 
 <!-- TODO
 
-- Com : afficher les infos user 
 - Profil : ajout de photo
 
 - Back office :
 Commentaires : modifier
-Publication : Ajouter, Modifier
+Publication : Supprimer
 
 - CSS
 

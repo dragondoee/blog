@@ -15,7 +15,7 @@
                 <a href='index.php?action=detail&id_billet=<?= $billet["id_billet"] ?>&supr=<?= $billet["id_billet"] ?>'>
                     <img src="img/delete.svg" alt="supprimer le billet" title="Supprimer le billet">
                 </a><br>
-                <a href='index.php?action=detail&id_billet=<?= $billet["id_billet"] ?>&modif=<?= $billet["id_billet"] ?>'>
+                <a href='index.php?action=form_billet&modif=<?= $billet["id_billet"] ?>'>
                     <img src="img/edit_note.svg" alt="modifier le billet" title="Modifier le billet">
                 </a><br>
             </span>
