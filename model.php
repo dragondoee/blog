@@ -156,7 +156,7 @@ function Get3Billets()
 function GetALLBillets()
 {
     global $db;
-    $requete = "SELECT * FROM billet";
+    $requete = "SELECT * FROM billet "  ;
     $stmt = $db->query($requete);
     return $result = $stmt->fetchall(PDO::FETCH_ASSOC);
 }
@@ -185,7 +185,6 @@ function deleteBillet($id_billet)
 }
 ;
 
-// TODO : tester
 function updateBillet($titre,$texte,$id_billet)
 {
     global $db;

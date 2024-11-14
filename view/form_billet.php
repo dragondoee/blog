@@ -19,7 +19,7 @@ if(isset($billet)){
 <?php
 } else {
     ?>
-    <form method="POST" action="index.php?action=Billet">
+    <form method="POST" action="index.php?action=addBillet">
     <div>
         <label for="titre">Titre</label>
         <input type="titre" id="titre" name="titre" require>

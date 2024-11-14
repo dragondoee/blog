@@ -68,11 +68,16 @@ require "view/header.php";
                         require "view/default.php";
                     }
                     break;
-                // Detail
-                case "detail":
+                // supr_billet
+                case "suprBillet":
                     if (isset($_GET["supr"])) {
                         deleteBillet($_GET["supr"]);
+                        $result = Get3Billets();
+                        require "view/default.php";
                     }
+                    break;
+                // Detail
+                case "detail":
                     $billet = GetBillet($_GET["id_billet"]);
                     if (GetAllCommentairesBillet($billet["id_billet"])) {
                         $com = GetAllCommentairesBillet($billet["id_billet"]);
@@ -142,11 +147,12 @@ require "view/header.php";
 
 <!-- TODO
 
+- Back office :
+Commentaires : modifier, ajouter sur nouvelle publication
+
 - Profil : ajout de photo
 
-- Back office :
-Commentaires : modifier
-Publication : Supprimer
+-Notification d'action ( suprimer, ajouter, modifer)
 
 - CSS
 

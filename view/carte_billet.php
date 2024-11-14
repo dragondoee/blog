@@ -12,7 +12,7 @@
         if ($_SESSION["login"] == "admin") {
             ?>
             <span class="admin-button-billet">
-                <a href='index.php?action=detail&id_billet=<?= $billet["id_billet"] ?>&supr=<?= $billet["id_billet"] ?>'>
+                <a href='index.php?action=suprBillet&supr=<?= $billet["id_billet"] ?>'>
                     <img src="img/delete.svg" alt="supprimer le billet" title="Supprimer le billet">
                 </a><br>
                 <a href='index.php?action=form_billet&modif=<?= $billet["id_billet"] ?>'>
