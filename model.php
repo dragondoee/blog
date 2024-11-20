@@ -94,24 +94,19 @@ function GetAllCommentairesBillet($id_billet)
 }
 ;
 
-function insertCommentaire($auteur, $com, $id_billet)
+function insertCommentaire( $com, $id_billet)
 {
     global $db;
     $requete = "INSERT INTO commentaire (auteur, com, billet) VALUES (:auteur, :com, :billet);";
     $stmt = $db->prepare($requete);
-    $stmt->bindParam(':auteur', $auteur, PDO::PARAM_INT);
+    $user = getUser($_SESSION["login"]);
+    $stmt->bindParam(':auteur', $user["id_user"], PDO::PARAM_INT);
     $stmt->bindParam(':com', $com, PDO::PARAM_STR);
     $stmt->bindParam(':billet', $id_billet, PDO::PARAM_INT);
     $stmt->execute();
 }
 ;
 
-function addCom($infoCom, $id_billet)// ajouter un commentaire
-{
-    $user = getUser($_SESSION["login"]);
-    insertCommentaire($user["id_user"], $infoCom["addCom"], $id_billet);
-}
-;
 
 function deleteCommentaire($id_com)
 {

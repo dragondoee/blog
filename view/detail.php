@@ -7,31 +7,6 @@
         <p><?= $billet["text"]; ?></p>
 
     </span>
-
-    <?php
-    echo "<h2>Commentaires : </h2>";
-    if (isset($com)) {
-
-
-        if (empty($_GET["com"])) {
-            ?>
-            <a href="index.php?action=detail&com=true&id_billet=<?= $billet["id_billet"]; ?>">Voir les commentaires</a>
-            <?php
-        } else {
-            ?>
-            <a href="index.php?action=detail&id_billet=<?= $billet["id_billet"]; ?>">Masquer les commentaires</a>
-            <?php
-        }
-    } else {
-        
-        if (isset($_SESSION["login"])) {
-            echo "Aucun commentaire, soyez le 1er";
-        } else {
-            echo "Aucun commentaire";
-        }
-    }
-    ;
-    ?>
-
+    <h2>Commentaires : </h2>
 
 </div>

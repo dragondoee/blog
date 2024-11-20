@@ -85,30 +85,48 @@ require "view/header.php";
                     } else {
                         $com = NULL;
                     }
-                    if (!isset($_GET["modif"])) {
-                        require "view/detail.php";
-                        if (isset($_SESSION["login"])) {
-                            require "view/form_com.php";
-                        }
+                    require "view/detail.php";
+                    require "view/form_com.php";
 
-                    }
                     // Commentaires
-                    if (isset($_GET["com"])) {
-                        if (isset($_POST["addCom"])) {
-                            addCom($_POST, $billet["id_billet"]);
-                            $_POST = array();
-                        }
-                        if (isset($_GET["supr"])) {
-                            deleteCommentaire($_GET["supr"]);
-                        }
-                        if (isset($_GET["modif"])) {
-
-                        }
                         $com = GetAllCommentairesBillet($billet["id_billet"]);
+                    if(isset($com)){
                         foreach ($com as $commentaire) {
                             $userCom = getUserId($commentaire["auteur"])["login"];
                             require "view/commentaire.php";
                         }
+                    } else{
+                        if (isset($_SESSION["login"])) {
+                            echo "Aucun commentaire, soyez le 1er";
+                        } else {
+                            echo "Aucun commentaire";
+                        }
+                    }
+                    ;
+                    ;
+                    break;
+                // Ajouter un billet
+                case "addCom":
+                    if (isset($_POST["addcom"])) {
+                        insertCommentaire($_POST["addcom"], $_POST["id_billet"]);
+                        $billet = GetBillet($_GET["supr"]);
+                        require "view/detail.php";
+                    }
+                    break;
+                // Modifier un billet
+                case "ModifCom":
+                    if (isset($_POST["addcom"])) {
+                        // updateCommentaire($_POST["addcom"], $_POST["id_billet"]);
+                        $billet = GetBillet($_GET["supr"]);
+                        require "view/detail.php";
+                    }
+                    break;
+                // supr_billet
+                case "suprCom":
+                    if (isset($_GET["supr"])) {
+                        deleteCommentaire($_GET["supr"]);
+                        $billet = GetBillet($_GET["supr"]);
+                        require "view/detail.php";
                     }
                     break;
                 // Profil
