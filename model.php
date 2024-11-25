@@ -73,6 +73,16 @@ function deconnexion()
 
 // ! Commentaire
 
+function GetCom($id_com)
+{
+    global $db;
+    $requete = "SELECT * FROM commentaire WHERE id_com=:id_com";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id_com', $id_com, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+;
 
 function GetAllCommentaires()
 {
@@ -120,9 +130,15 @@ function deleteCommentaire($id_com)
 ;
 
 // TODO
-function updateCommentaire()
+function updateCommentaire($com,$id_com)
 {
-
+    global $db;
+    $requete = "UPDATE commentaire SET com=:com WHERE id_com=:id_com";
+    $stmt = $db->prepare($requete);
+    $stmt->bindParam(':id_com', $id_com, PDO::PARAM_INT);
+    $stmt->bindParam(':com', $com, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ;
 
@@ -261,21 +277,3 @@ function updatephoto()// mettre à jour sa photo de profil
 
 
 
-
-
-
-// ! Indication / aide 
-
-
-// Il faut utiliser des case / Switch
-// Action = Login -> Action c'est afficher le formulaire
-// Le fichier index est le contrôleur ( 2 pages à faire sans le back office)
-// 1 page pour saisir le GetBillet(2 vue utilisateur)
-// Tous les boutons renvois sur la page index mais avec une action
-
-// On peut géré l'admin on considérant que c'est l'ID 1
-
-// form method post 
-// action en get et le reste en post pour pas mélanger les INFO_CREDITS
-// insertUser array du Post
-// $_post ==> Récupère en tableau toute les infos

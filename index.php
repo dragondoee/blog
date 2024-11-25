@@ -87,46 +87,49 @@ require "view/header.php";
                     }
                     require "view/detail.php";
                     require "view/form_com.php";
-
-                    // Commentaires
-                        $com = GetAllCommentairesBillet($billet["id_billet"]);
-                    if(isset($com)){
-                        foreach ($com as $commentaire) {
-                            $userCom = getUserId($commentaire["auteur"])["login"];
-                            require "view/commentaire.php";
-                        }
-                    } else{
-                        if (isset($_SESSION["login"])) {
-                            echo "Aucun commentaire, soyez le 1er";
-                        } else {
-                            echo "Aucun commentaire";
-                        }
-                    }
-                    ;
-                    ;
+                    require "view/commentaire.php";
                     break;
-                // Ajouter un billet
+                // Ajouter un Commentaire
                 case "addCom":
-                    if (isset($_POST["addcom"])) {
-                        insertCommentaire($_POST["addcom"], $_POST["id_billet"]);
-                        $billet = GetBillet($_GET["supr"]);
-                        require "view/detail.php";
+                    if (isset($_POST["addCom"])) {
+                        insertCommentaire($_POST["addCom"], $_GET["id_billet"]);
                     }
+                    $billet = GetBillet($_GET["id_billet"]);
+                    $com = GetAllCommentairesBillet($billet["id_billet"]);
+                    require "view/detail.php";
+                    require "view/form_com.php";
+                    require "view/commentaire.php";
+
                     break;
-                // Modifier un billet
+                // Formulaire Com
+                case "form_com":
+                    $billet = GetBillet($_GET["id_billet"]);
+                    if (isset($_GET["modif"])) {
+                        $id_com = $_GET["modif"];
+                        $commentaire = GetCom($id_com) ;
+                    }
+                    require "view/form_com.php";
+                    break;
+                // Modifier un Commentaire
                 case "ModifCom":
-                    if (isset($_POST["addcom"])) {
-                        // updateCommentaire($_POST["addcom"], $_POST["id_billet"]);
-                        $billet = GetBillet($_GET["supr"]);
+                    if (isset($_POST["addCom"])) {
+                        updateCommentaire($_POST["addCom"], $_GET["modif"]);
+                        $billet = GetBillet($_GET["id_billet"]);
+                        $com = GetAllCommentairesBillet($billet["id_billet"]);
                         require "view/detail.php";
+                        require "view/form_com.php";
+                        require "view/commentaire.php";
                     }
                     break;
-                // supr_billet
+                // supr_com
                 case "suprCom":
                     if (isset($_GET["supr"])) {
                         deleteCommentaire($_GET["supr"]);
-                        $billet = GetBillet($_GET["supr"]);
+                        $billet = GetBillet($_GET["id_billet"]);
+                        $com = GetAllCommentairesBillet($billet["id_billet"]);
                         require "view/detail.php";
+                        require "view/form_com.php";
+                        require "view/commentaire.php";
                     }
                     break;
                 // Profil
@@ -164,9 +167,6 @@ require "view/header.php";
 
 
 <!-- TODO
-
-- Back office :
-Commentaires : modifier, ajouter sur nouvelle publication
 
 - Profil : ajout de photo
 

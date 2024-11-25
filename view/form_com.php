@@ -4,18 +4,17 @@
 if (isset($commentaire)) {
     ?>
 
-    <form method="POST" action="index.php?action=ModifCom">
+    <form method="POST" action="index.php?action=ModifCom&id_billet=<?= $billet["id_billet"]; ?>&modif=<?= $commentaire["id_com"] ?>">
         <div>
             <label for="addCom">Commentaire</label>
             <textarea name="addCom" id="addCom" cols="100" rows="2"> <?= $commentaire["com"] ?> </textarea>
-            <input type="hidden" name="id_com" value="<?= $billet["id_billet"] ?>">
             <input type="submit">
     </form>
 
     <?php
 } else {
     ?>
-    <form method="POST" action="index.php?action=AddCom">
+    <form method="POST" action="index.php?action=addCom&id_billet=<?= $billet["id_billet"]; ?>">
         <label for="addCom">Commentaire</label>
         <textarea name="addCom" id="addCom" cols="100" rows="2"></textarea>
         <input type="submit">
