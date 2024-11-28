@@ -1,5 +1,5 @@
 <!-- Vu par défault / Page accueil -->
-<h1 id="content">Cyber Blog 2059</h1>
+<h1 id="content">CyberBlog 2059</h1>
 <?php
 if (isset($_SESSION["login"])) {
     echo "<div class='bjr'> <p>Bonjour {$_SESSION["login"]}, <br> voici les 3 posts les plus récents </p>";

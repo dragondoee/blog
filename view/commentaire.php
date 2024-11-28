@@ -10,7 +10,6 @@ if (empty($com)) {
         $userCom = getUserId($commentaire["auteur"])["login"];
         ?>
 
-        <span>
             <div class="liste-com">
 
                 <img class="pp" src="<?php
@@ -22,7 +21,7 @@ if (empty($com)) {
                 <span class="content-com">
                     <span class="top-part-com">
                         <p><strong><?= $userCom ?></strong></p>
-                        <p class="date">Publié le <?= (new DateTime($commentaire["date"]))->format('d/m/Y \à H\hi'); ?></p>
+                        <p class="date ">Publié le <?= (new DateTime($commentaire["date"]))->format('d/m/Y \à H\hi'); ?></p>
                     </span>
                     <p><?= $commentaire["com"]; ?></p>
                 </span>
@@ -47,7 +46,6 @@ if (empty($com)) {
                 ?>
 
             </div>
-        </span>
 
         <?php
     }

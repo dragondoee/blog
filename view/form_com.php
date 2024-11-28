@@ -14,9 +14,9 @@ if (isset($commentaire)) {
     <?php
 } else {
     ?>
-    <form method="POST" action="index.php?action=addCom&id_billet=<?= $billet["id_billet"]; ?>">
-        <label for="addCom">Commentaire</label>
-        <textarea name="addCom" id="addCom" cols="100" rows="2"></textarea>
+    <form class="form_com" method="POST" action="index.php?action=addCom&id_billet=<?= $billet["id_billet"]; ?>">
+        <!-- <label for="addCom">Commentaire</label> -->
+        <textarea name="addCom" id="addCom" placeholder="Ajoutez un commentaire"></textarea>
         <input type="submit">
     </form>
     <?php

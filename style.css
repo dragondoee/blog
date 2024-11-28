@@ -5,8 +5,9 @@
 }
 
 :root {
-  --pink: #FF66B2;
+  --pink: #D571D3;
   --night: #03001f;
+  --blue:#4C6DFF;
 }
 
 /* ======================================================= FONT ======================================================= */
@@ -21,8 +22,8 @@ body {
 }
 
 body {
-  background-color: #03001f;
-  color: #FFFFFF; /* Texte en blanc */
+  background-color: var(--night);
+  color: #FFFFFF;
   font-family: 'Press Start 2P', monospace;
   line-height: 1.6;
   padding: 20px;
@@ -43,12 +44,6 @@ h1, h2, h3 {
 
 /* ======================================================= Autres ======================================================= */
 
-hr {
-  width: 85%;
-  margin-top: 70px;
-  margin-bottom: 70px;
-  border-color: var(--darkRed);
-}
 
 .pp {
   width: 44px;
@@ -56,13 +51,26 @@ hr {
   border-radius: 50px;
 }
 
+footer{
+  margin-top: 20vh;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
 
 /* ======================================================= Header ======================================================= */
 
 .composant-header {
-  font-family: "Iceland", sans-serif, Impact;
-  /* background-color: var(--lightPink); */
-  color: var(--darkRed);
   width: 100%;
   position: relative;
   padding: 0 50px;
@@ -92,7 +100,6 @@ hr {
 .composant-header a {
   text-decoration: none;
   margin-right: auto;
-  color: var(--darkRed);
 }
 
 .composant-header a:hover {
@@ -143,22 +150,50 @@ li .ico-nav{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .date-publication{
   font-size: 0.8rem;
 }
 
-/* .billet div {
-  
-} */
 
 .admin-button-billet{
   margin: 10px;
   display: flex;
   justify-content: center;
   gap: 1vw;
+}
+
+/* ======================================================= Détail ======================================================= */
+
+.contenu{
+  width: 80vw;
+  margin: 10vh auto;
+  border: var(--pink) solid 2px;
+  border-radius: 10px;
+  padding: 50px;
+}
+
+.contenu div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contenu .date{
+  font-size: 0.8rem;
+  color: var(--blue);
+  margin: 0;
+}
+
+.contenu p{
+  margin-top: 5vh;
+}
+
+.h3-com{
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -169,17 +204,22 @@ li .ico-nav{
   justify-content: flex-start;
   gap: 30px;
   align-items: center;
-  border: solid var(--darkRed) 1px;
-  margin: 20px;
-  margin-left: 2%;
+  margin: 10vh auto;
+
   padding: 20px;
   border-radius: 15px;
-  width: 60%;
+  width: 60vw;
+  border: var(--pink) solid 2px;
 }
 
 .top-part-com {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 1.5vw;
+}
+
+.top-part-com .date{
+  font-size: 0.7rem;
 }
 
 .admin-button-com {
@@ -191,27 +231,90 @@ li .ico-nav{
   margin-bottom: 5px;
 }
 
+/* TODO ------------------------------------------------------------------- USE ---------------------------------------------  */
+.comment-author {
+  font-weight: bold;
+  color: #FF66B2; /* Rose pour l'auteur */
+}
+
 /* ======================================================= Form ======================================================= */
 
 form{
   margin: 20px auto;
 }
 
+.form_com{
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ------------------------------------------- À TESTER ------------------------------ */
+
+
+/* Inputs */
+input[type="text"], 
+input[type="password"], 
+input[type="email"], 
+textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #FF66B2;
+    background-color: #3D2A5A;
+    color: #FFF;
+    font-size: 1.1rem;
+    font-family: 'Press Start 2P', monospace;
+    border-radius: 8px;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+/* Focus */
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+input[type="email"]:focus, 
+textarea:focus {
+    border: 2px solid var(--blue);
+    background-color: var(--night);
+    outline: none;
+}
+
+/* Placeholder */
+input::placeholder, 
+textarea::placeholder {
+    color: #a9a9a9;
+}
+
+/* Pour les boutons dans les formulaires */
+input[type="submit"]{
+    background-color: var(--night);
+    color: var(--blue);
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+
+textarea {
+  font-size: 1rem;
+  resize: none;
+}
 
 /* ======================================================= Bouton style ======================================================= */
 
 .button-style,
+input[type="submit"],
 button {
+  font-family: 'Press Start 2P', monospace;
   text-decoration: none;
   font-size: 1.2rem;
   border-radius: 10px;
   padding: 10px;
-  width: auto;
+  /* width: auto; */
   min-width: 44px;
   text-align: center;
   border: none;
   cursor: pointer;
-  box-shadow: 0 2px 5px var(--pink);
+  box-shadow: 0 2px 7px var(--pink);
   transition: ease 0.5s;
   z-index: 2;
   margin: 2vh 0;
@@ -220,7 +323,7 @@ button {
 .small-button {
   font-size: 1.1rem;
   border-radius: 10px;
-  width: auto;
+  /* width: auto; */
 }
 
 .centerElem {
@@ -232,6 +335,7 @@ button {
 
 .button-style:hover,
 .small-button:hover,
+input[type="submit"]:hover,
 button:hover {
   color: var(--darkRed);
   text-align: center;

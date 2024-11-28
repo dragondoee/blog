@@ -11,12 +11,12 @@ require "view/header.php";
     <!-- Style -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_test.css">
-    <!--  -->
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Favicon -->
+     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <!-- Typo -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <title>Blog</title>
+    <title>CyberBlog 2059</title>
 </head>
 
 <body>
@@ -88,7 +88,9 @@ require "view/header.php";
                         $com = NULL;
                     }
                     require "view/detail.php";
-                    require "view/form_com.php";
+                    if (isset($_SESSION["login"])) {
+                        require "view/form_com.php";
+                    }
                     require "view/commentaire.php";
                     break;
                 // Ajouter un Commentaire
@@ -167,6 +169,10 @@ require "view/header.php";
 
         ?>
     </main>
+
+    <footer>
+        Emilie Desgranges
+    </footer>
 
 </body>
 
