@@ -1,19 +1,21 @@
 <!-- Vu par défault / Page accueil -->
+<h1 id="content">Cyber Blog 2059</h1>
 <?php
 if (isset($_SESSION["login"])) {
-    echo "Bonjour {$_SESSION["login"]}  <br><br>";
+    echo "<div class='bjr'> <p>Bonjour {$_SESSION["login"]}, <br> voici les 3 posts les plus récents </p>";
     if ($_SESSION["login"] == "admin") {
         ?>
-        <a href='index.php?action=form_billet'>
-            <img src="img/add.svg" alt="Ajouter un billet">
+        <a class="button button-style addPost" href='index.php?action=form_billet'>
+            <img src="img/add.svg" alt="Ajouter un billet"> Ajouter un post
         </a>
+    </div>
         <?php
     }
 
 }
 
 ?>
-<h1 id="content">Blog Emilie</h1>
+
 <span class="liste-billet">
     <?php
 

@@ -1,34 +1,46 @@
 <?php
-require "../model.php";
+
 
 if (isset($_SESSION["login"])) {
 
-// un jpeg de moins de 1Mo, sauvegarde la photo dans le bon répertoire avec le bon nom (ex : photo/profil_12.jpg).
+    // Répertoire de stockage des images de profil
+    $content_dir = 'img/profil/';
 
-$photo=$_GET["photo"];
-$nom_fichier="profil_";
+    // Vérifie si un fichier a été envoyé
+    if (isset($_FILES["image"])) {
 
+        // Récupérer l'extension du fichier téléversé
+        $fileExtension = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
 
+        // Valider le type de fichier
+        $allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+        if (!in_array($fileExtension, $allowedExtensions)) {
+            exit("Le format de fichier n'est pas autorisé. Seules les images (jpg, jpeg, png, gif) sont acceptées.");
+        }
 
+        // Construire le nom du fichier en fonction de l'utilisateur
+        $nom_fichier = strval($_SESSION["login"]) . "." . $fileExtension;
 
+        // Supprimer les anciennes images du même utilisateur
+        foreach ($allowedExtensions as $ext) {
+            $existingFile = $content_dir . "profil_" . strval($_SESSION["login"]) . "." . $ext;
+            if (file_exists($existingFile)) {
+                unlink($existingFile); // Supprimer le fichier
+            }
+        }
 
+        // Déplacement du fichier téléversé
+        $tmp_file = $_FILES['image']['tmp_name'];
+        if (!is_uploaded_file($tmp_file)) {
+            exit("Le fichier est introuvable.");
+        }
 
-// Récup l'id User
-getUser($_SESSION["login"]);
+        if (!move_uploaded_file($tmp_file, $content_dir . $nom_fichier)) {
+            exit("Impossible de copier le fichier dans $content_dir");
+        }
 
-// Echo
-echo "ID User : {$result["id_user"]} <br>";
-echo "Photo : {$_GET["photo"]} <br>";
-
-$nom_fichier.=strval($result["id_user"]);
-echo $nom_fichier;
-
-
-
-// $requete_photo = "INSERT INTO user('photo') VALUES (:photo);";
-// $stmt_photo = $db->prepare($requete_photo);
-// $stmt_photo->bindParam(':photo', $nom_fichier, PDO::PARAM_STR);
-// $stmt_photo->execute();
-
-
-};
+        echo "Le fichier a bien été uploadé avec le nom : $nom_fichier";
+    } else {
+        exit("Aucun fichier n'a été téléversé.");
+    }
+}

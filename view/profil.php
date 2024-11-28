@@ -5,12 +5,13 @@
 if (isset($_SESSION["login"])) {
     echo "<h1>Bonjour {$_SESSION["login"]} </h1>";
     echo "Login : {$user["login"]} <br>";
+    echo "<img class='pp' src='img/profil/{$_SESSION["login"]}' alt='photo de profil de {$_SESSION["login"]}'>";
 
     ?>
 
-    <form action="ajout_photo.php">
-        <label for="photo">Photo</label>
-        <input type="file" name="photo" id="photo">
+    <form method="POST" action="index.php?action=photoProfil" enctype="multipart/form-data">
+        <label for="image">Image</label>
+        <input type="file" name="image" id="image">
 
         <br>
         <br>

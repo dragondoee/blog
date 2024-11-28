@@ -1,11 +1,40 @@
-<?php
-foreach ($users as $user) {
-    echo "<img class='pp' src='img/profil/{$user["login"]}' alt='photo de profil de {$user["login"]}'>";
-    echo "{$user["login"]}";
-    if ($user["login"] != "admin") {
-        echo "<a href='index.php?action=gestionUser&gestion=user&supr={$user["login"]}'> Supprimer </a><br>";
+<table>
+    <tbody>
+        <tr>
+            <td>Photo de profil</td>
+            <td>login</td>
+            <td>Modifier</td>
+            <td>supprimer</td>
+        </tr>
 
-    } else {
-        echo "<br>";
-    }
-}
+        <?php
+        foreach ($users as $user) {
+            $photo = file_exists("img/profil/{$user["login"]}.jpg")
+                ? "img/profil/{$user["login"]}.jpg"
+                : (file_exists("img/profil/{$user["login"]}.png")
+                    ? "img/profil/{$user["login"]}.png"
+                    : "img/profil/default.jpg");
+
+            ?>
+            <tr>
+                <td><img class='pp' src='<?= $photo ?>' alt='photo de profil de <?= $user["login"] ?>'> </td>
+                <td><?= $user["login"]; ?></td>
+                <td>
+                    <?php
+                    echo "<a href=''> <img src='img/edit.svg' alt='img cliquable pour supprimer l'utilisateur' title='Supprimer'> </a><br>";
+                    ?>
+                </td>
+                <td><?php if ($user["login"] != "admin") {
+                    echo "<a href='index.php?action=gestionUser&gestion=user&supr={$user["login"]}'> <img src='img/delete.svg' alt='img cliquable pour supprimer l'utilisateur' title='Supprimer'> </a><br>";
+                } ?>
+
+                </td>
+            </tr>
+
+
+            <?php
+        }
+
+        ?>
+    </tbody>
+</table>

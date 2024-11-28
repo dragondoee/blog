@@ -13,7 +13,12 @@ if (empty($com)) {
         <span>
             <div class="liste-com">
 
-                <img class="pp" src="img/profil/<?= $userCom ?>" alt="photo de profil de <?= $userCom ?>">
+                <img class="pp" src="<?php
+                echo file_exists("img/profil/{$userCom}.jpg")
+                    ? "img/profil/{$userCom}.jpg"
+                    : (file_exists("img/profil/{$userCom}.png")
+                        ? "img/profil/{$userCom}.png"
+                        : "img/profil/default.jpg"); ?>" alt="photo de profil de <?= htmlspecialchars($userCom) ?>">
                 <span class="content-com">
                     <span class="top-part-com">
                         <p><strong><?= $userCom ?></strong></p>
@@ -27,7 +32,8 @@ if (empty($com)) {
                     if ($_SESSION["login"] == "admin") {
                         ?>
                         <span class='admin-button-com'>
-                            <a href='index.php?action=suprCom&supr=<?= $commentaire["id_com"] ?>&id_billet=<?= $billet["id_billet"]; ?>'>
+                            <a
+                                href='index.php?action=suprCom&supr=<?= $commentaire["id_com"] ?>&id_billet=<?= $billet["id_billet"]; ?>'>
                                 <img src="img/delete.svg" alt="supprimer le commentaire" title="Supprimer le commentaire">
                             </a><br>
                             <a

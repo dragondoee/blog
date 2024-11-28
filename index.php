@@ -10,15 +10,17 @@ require "view/header.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Style -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_test.css">
     <!--  -->
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
     <title>Blog</title>
 </head>
 
 <body>
-
     <main>
-
         <?php
 
         if (isset($_GET["action"])) {
@@ -106,7 +108,7 @@ require "view/header.php";
                     $billet = GetBillet($_GET["id_billet"]);
                     if (isset($_GET["modif"])) {
                         $id_com = $_GET["modif"];
-                        $commentaire = GetCom($id_com) ;
+                        $commentaire = GetCom($id_com);
                     }
                     require "view/form_com.php";
                     break;
@@ -135,6 +137,11 @@ require "view/header.php";
                 // Profil
                 case "profil":
                     $user = getUser($_SESSION["login"]);
+                    require "view/profil.php";
+                    break;
+                case "photoProfil":
+                    $user = getUser($_SESSION["login"]);
+                    require "view/ajout_photo.php";
                     require "view/profil.php";
                     break;
                 // Gestion utilisateur
@@ -168,7 +175,6 @@ require "view/header.php";
 
 <!-- TODO
 
-- Profil : ajout de photo
 
 -Notification d'action ( suprimer, ajouter, modifer)
 

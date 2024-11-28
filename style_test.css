@@ -1,0 +1,218 @@
+
+
+
+
+a {
+    color: #4C6DFF; /* Bleu vif pour les liens */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Container général */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: #3D2A5A; /* Violet avec un peu de nuance bleue */
+    border: 3px solid #FF66B2; /* Bordure rose */
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 0 15px #FF66B2; /* Ombre rose */
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-header {
+    font-size: 1.6rem;
+    color: #FFD700; /* Jaune or pour le titre */
+    margin-bottom: 10px;
+}
+
+.card-date {
+    font-size: 1rem;
+    color: #8A8A8A; /* Gris clair pour la date */
+    margin-bottom: 15px;
+}
+
+.card-body {
+    font-size: 1rem;
+    color: #D0D0D0; /* Gris clair pour le texte */
+    margin-bottom: 20px;
+}
+
+.card-button {
+    background-color: #4C6DFF; /* Bleu vif pour le bouton */
+    color: #FFF;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.card-button:hover {
+    background-color: #FF66B2; /* Rose fluo au survol */
+}
+
+.comment-section {
+    background-color: #3D2A5A;
+    padding: 20px;
+    margin-top: 30px;
+    border: 3px solid #FF66B2;
+}
+
+.comment {
+    background-color: #2E003E; /* Fond plus sombre */
+    border-left: 5px solid #4C6DFF; /* Bleu pour la bordure */
+    margin: 10px 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.comment-avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #FF66B2; /* Rose pour l'auteur */
+}
+
+.comment-text {
+    color: #D0D0D0; /* Gris pour le texte */
+}
+
+.comment-date {
+    font-size: 0.9rem;
+    color: #8A8A8A;
+    margin-top: 5px;
+}
+
+.comment-form, .post-form {
+    background-color: #3D2A5A;
+    padding: 20px;
+    border: 3px solid #FF66B2;
+    box-shadow: 0 0 10px #4C6DFF;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.comment-form input[type="text"], .comment-form textarea, 
+.post-form input[type="text"], .post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #4C6DFF;
+    background-color: #2E003E;
+    color: #FFF;
+    font-size: 1rem;
+}
+
+.comment-form input[type="submit"], .post-form input[type="submit"] {
+    background-color: #FF66B2; /* Rose pour le bouton */
+    color: #FFF;
+    padding: 15px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.comment-form input[type="submit"]:hover, .post-form input[type="submit"]:hover {
+    background-color: #4C6DFF; /* Bleu pour le bouton au survol */
+}
+
+/* Navigation */
+.navbar {
+    background-color: #2E003E;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    box-shadow: 0 0 10px #4C6DFF;
+}
+
+.navbar a {
+    color: #000000; /* Icônes noires */
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #FF66B2; /* Rose au survol */
+}
+
+/* Exemple d'icône avec Font Awesome */
+.navbar i {
+    font-size: 2rem;
+}
+
+/* Inputs */
+input[type="text"], 
+input[type="password"], 
+input[type="email"], 
+textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #FF66B2; /* Bordure rose */
+    background-color: #3D2A5A; /* Fond violet foncé */
+    color: #FFF; /* Texte en blanc */
+    font-size: 1.1rem;
+    font-family: 'Press Start 2P', monospace; /* Police rétro */
+    border-radius: 8px; /* Coins arrondis */
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+/* Focus (quand l'utilisateur clique sur l'input) */
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+input[type="email"]:focus, 
+textarea:focus {
+    border: 2px solid #4C6DFF; /* Bordure bleue au focus */
+    background-color: #2E003E; /* Fond plus sombre au focus */
+    outline: none; /* Enlève le contour par défaut */
+}
+
+/* Placeholder (texte d'exemple) */
+input::placeholder, 
+textarea::placeholder {
+    color: #8A8A8A; /* Gris clair pour le placeholder */
+}
+
+/* Pour les boutons dans les formulaires */
+input[type="submit"], 
+button {
+    background-color: #FF66B2; /* Rose vif */
+    color: #FFF;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-family: 'Press Start 2P', monospace;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover, 
+button:hover {
+    background-color: #4C6DFF; /* Bleu vif au survol */
+}
+
+textarea {
+    height: 150px; /* Hauteur d'un champ texte multiligne */
+    resize: vertical; /* Permet de redimensionner seulement verticalement */
+}

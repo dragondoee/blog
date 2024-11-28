@@ -1,5 +1,6 @@
 <div class="contenu">
     <h1 id="content"><?= $billet["titre"]; ?></h1>
+    <p>publié le <?= (new DateTime($billet["date"]))->format('d/m/Y \à H\hi'); ?></p>
 
     <!-- Description -->
     <span class="description">

@@ -262,18 +262,3 @@ function inscription($infoLogin)
 
 
 
-function addphoto()// ajouter une photo de profil
-{
-
-}
-;
-
-function updatephoto()// mettre à jour sa photo de profil
-{
-
-}
-;
-
-
-
-
