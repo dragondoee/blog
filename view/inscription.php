@@ -3,18 +3,18 @@
 
 
         <label for="login">Login</label>
-        <input type="text" name="login" id="login">
+        <input type="text" name="login" id="login" required>
         <?php if (isset($msg) && $msg=="err-login") {
             echo "Le login est déjà pris";
         } ?>
         <br>
 
         <label for="mdp">Mot de passe</label>
-        <input type="text" name="mdp" id="mdp">
+        <input type="text" name="mdp" id="mdp" required>
         <br>
 
         <label for="conf">Confirmer le mot de passe</label>
-        <input type="text" name="conf" id="conf">
+        <input type="text" name="conf" id="conf" required>
         <?php if (isset($msg) && $msg=="err-mdp") {
             echo "Les mots de passe ne sont pas identiques";
         } ?>

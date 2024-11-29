@@ -7,7 +7,7 @@
                         title="Archives"></a></li>
             <?php
             if (isset($_SESSION["login"])) {
-                if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+                if ($_SESSION["login"] == "admin") {
                     ?>
                     <li><a href="index.php?action=gestionUser"><img class="ico-nav" src="img/manage_accounts.svg" alt="image cliquable vers liste utilisateurs"
                                 title="Liste Utilisateurs"></a></li>

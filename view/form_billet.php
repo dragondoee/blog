@@ -22,11 +22,11 @@ if(isset($billet)){
     <form method="POST" action="index.php?action=addBillet">
     <div>
         <label for="titre">Titre</label>
-        <input type="titre" id="titre" name="titre" require>
+        <input type="titre" id="titre" name="titre" required>
     </div>
     <div>
         <label for="texte">Texte</label>
-        <textarea name="texteBillet" id="texte" cols="100" rows="10" require></textarea>
+        <textarea name="texteBillet" id="texte" cols="100" rows="10" required></textarea>
     </div>
     <div><input type="submit"></div>
 </form>
