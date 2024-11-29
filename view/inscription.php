@@ -28,4 +28,4 @@
 
     </form>
 
-    <a href="index.php?action=login">Vous avez déjà un compte ? Connectez-vous</a>
+    <a class="txt-center" href="index.php?action=login">Vous avez déjà un compte ? Connectez-vous</a>

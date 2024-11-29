@@ -1,7 +1,6 @@
 <header class="composant-header">
     <a href="#content" class="skip-link">Aller au contenu</a>
     <nav>
-        <div></div>
         <a class="retourAccueil" href="index.php"><img src="img/logo-full.png" alt="retour à l'accueil"></a>
         <ul>
             <li><a href="index.php?action=archives"><img class="ico-nav" src="img/archive.svg" alt="image cliquable vers archives"
@@ -20,8 +19,7 @@
                 <?php
             } else {
                 ?>
-                <li><a href="index.php?action=login">Se connecter</a></li>
-                <li><a href="index.php?action=inscription">S'inscrire</a></li>
+                <li><a href="index.php?action=login"><img class="ico-nav" src="img/account_circle.svg" alt="image cliquable vers profil" title="Se connecter"></a></li>
                 <?php
             }
             ?>

@@ -19,4 +19,4 @@
 
 </form>
 
-<a href="index.php?action=inscription">Vous n'avez pas de compte ? Inscrivez-vous</a>
+<a class="txt-center" href="index.php?action=inscription">Vous n'avez pas de compte ? Inscrivez-vous</a>

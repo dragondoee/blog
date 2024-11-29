@@ -4,7 +4,7 @@
 if (isset($commentaire)) {
     ?>
 
-    <form method="POST" action="index.php?action=ModifCom&id_billet=<?= $billet["id_billet"]; ?>&modif=<?= $commentaire["id_com"] ?>">
+    <form class="form_com" method="POST" action="index.php?action=ModifCom&id_billet=<?= $billet["id_billet"]; ?>&modif=<?= $commentaire["id_com"] ?>">
         <div>
             <label for="addCom">Commentaire</label>
             <textarea name="addCom" id="addCom" cols="100" rows="2"> <?= $commentaire["com"] ?> </textarea>

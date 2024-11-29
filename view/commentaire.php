@@ -1,16 +1,18 @@
 <?php
+echo "<div class='list-com'>";
 if (empty($com)) {
     if (isset($_SESSION["login"])) {
-        echo "Aucun commentaire, soyez le 1er";
+        echo "<p>Aucun commentaire, soyez le 1er</p>";
     } else {
-        echo "Aucun commentaire";
+        echo "<p>Aucun commentaire</p>";
     }
 } else {
+    
     foreach ($com as $commentaire) {
         $userCom = getUserId($commentaire["auteur"])["login"];
         ?>
 
-            <div class="liste-com">
+            <div class="com-unique">
 
                 <img class="pp" src="<?php
                 echo file_exists("img/profil/{$userCom}.jpg")
@@ -20,7 +22,7 @@ if (empty($com)) {
                         : "img/profil/default.jpg"); ?>" alt="photo de profil de <?= htmlspecialchars($userCom) ?>">
                 <span class="content-com">
                     <span class="top-part-com">
-                        <p><strong><?= $userCom ?></strong></p>
+                        <p class="comment-author"><strong><?= $userCom ?></strong></p>
                         <p class="date ">Publié le <?= (new DateTime($commentaire["date"]))->format('d/m/Y \à H\hi'); ?></p>
                     </span>
                     <p><?= $commentaire["com"]; ?></p>
@@ -49,6 +51,7 @@ if (empty($com)) {
 
         <?php
     }
+    
 }
-
+echo  "</div>"  ;
 ?>

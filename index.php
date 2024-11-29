@@ -12,10 +12,10 @@ require "view/header.php";
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_test.css">
     <!-- Favicon -->
-     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+     <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
     <!-- Typo -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
+    <!--  -->
     <title>CyberBlog 2059</title>
 </head>
 

@@ -17,7 +17,7 @@
 
             ?>
             <tr>
-                <td><img class='pp' src='<?= $photo ?>' alt='photo de profil de <?= $user["login"] ?>'> </td>
+                <td><img class='pp gestUser-pp' src='<?= $photo ?>' alt='photo de profil de <?= $user["login"] ?>'> </td>
                 <td><?= $user["login"]; ?></td>
                 <td>
                     <?php

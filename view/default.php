@@ -8,9 +8,10 @@ if (isset($_SESSION["login"])) {
         <a class="button button-style addPost" href='index.php?action=form_billet'>
             <img src="img/add.svg" alt="Ajouter un billet"> Ajouter un post
         </a>
-    </div>
+    
         <?php
     }
+    echo "</div>";
 
 }
 
