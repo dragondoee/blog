@@ -60,11 +60,9 @@ function deleteUser($login)
 }
 ;
 
-// TODO : A revoir
 function deconnexion()
 {
     session_destroy();
-    // ! Utilisation du header
     header("location: index.php");
 }
 ;
@@ -129,7 +127,7 @@ function deleteCommentaire($id_com)
 }
 ;
 
-// TODO
+
 function updateCommentaire($com,$id_com)
 {
     global $db;
@@ -213,7 +211,7 @@ function updateBillet($titre,$texte,$id_billet)
 
 // ! Traitement
 
-// TODO : header location
+
 function login($infoLogin)
 {
     if ($user = getUser($infoLogin["login"])) {
@@ -226,7 +224,6 @@ function login($infoLogin)
             // Revenir à la page d'accueil
             header("location: index.php");
             // return "connexion";
-            // ! Utilisation du header
         } else {
             return "err-mdp";
         }
