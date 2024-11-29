@@ -179,15 +179,3 @@ require "view/header.php";
 </body>
 
 </html>
-
-
-<!-- TODO
-
-
--Notification d'action ( suprimer, ajouter, modifer)
-
-- CSS :profil
-
-- Header x2 : model
-
--->
