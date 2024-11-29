@@ -79,7 +79,9 @@ a:hover {
 }
 
 .retour{
-  margin-left: 2vw;
+  display: block;
+  width: 80vw;
+  margin: 5vh auto;
 }
 
 
@@ -199,7 +201,7 @@ li .ico-nav{
 
 .contenu{
   width: 80vw;
-  margin: 10vh auto;
+  margin: 2vh auto 10vh auto;
   border: var(--pink) solid 2px;
   border-radius: 10px;
   padding: 50px;
