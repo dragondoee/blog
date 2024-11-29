@@ -3,7 +3,6 @@
         <tr>
             <td>Photo de profil</td>
             <td>login</td>
-            <td>Modifier</td>
             <td>supprimer</td>
         </tr>
 
@@ -19,11 +18,6 @@
             <tr>
                 <td><img class='pp gestUser-pp' src='<?= $photo ?>' alt='photo de profil de <?= $user["login"] ?>'> </td>
                 <td><?= $user["login"]; ?></td>
-                <td>
-                    <?php
-                    echo "<a href=''> <img src='img/edit.svg' alt='img cliquable pour supprimer l'utilisateur' title='Supprimer'> </a><br>";
-                    ?>
-                </td>
                 <td><?php if ($user["login"] != "admin") {
                     echo "<a href='index.php?action=gestionUser&gestion=user&supr={$user["login"]}'> <img src='img/delete.svg' alt='img cliquable pour supprimer l'utilisateur' title='Supprimer'> </a><br>";
                 } ?>
