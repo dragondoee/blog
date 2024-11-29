@@ -40,7 +40,7 @@ function GetAllUsers()
 function insertUser($login, $mdp)
 {
     global $db;
-    $requete = "INSERT INTO user VALUES (NULL, NULL, :login, :mdp);";
+    $requete = "INSERT INTO user VALUES (NULL, :login, :mdp);";
     $stmt = $db->prepare($requete);
     $stmt->bindParam(':login', $login, PDO::PARAM_STR);
     $mdp_hash = password_hash($mdp, PASSWORD_DEFAULT);
