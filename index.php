@@ -176,7 +176,6 @@ require "view/header.php";
         Emilie Desgranges
     </footer>
 
-    <script src="script.js"></script>
 </body>
 
 </html>
