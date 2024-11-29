@@ -39,7 +39,6 @@ if (isset($_SESSION["login"])) {
             exit("Impossible de copier le fichier dans $content_dir");
         }
 
-        echo "Le fichier a bien été uploadé avec le nom : $nom_fichier";
     } else {
         exit("Aucun fichier n'a été téléversé.");
     }

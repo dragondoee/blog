@@ -10,9 +10,8 @@ require "view/header.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Style -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style_test.css">
     <!-- Favicon -->
-     <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
     <!-- Typo -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <!--  -->
@@ -141,6 +140,9 @@ require "view/header.php";
                     $user = getUser($_SESSION["login"]);
                     require "view/profil.php";
                     break;
+                case "form_pp":
+                    require "view/form_pp.php";
+                    break;
                 case "photoProfil":
                     $user = getUser($_SESSION["login"]);
                     require "view/ajout_photo.php";
@@ -174,6 +176,7 @@ require "view/header.php";
         Emilie Desgranges
     </footer>
 
+    <script src="script.js"></script>
 </body>
 
 </html>
@@ -184,6 +187,8 @@ require "view/header.php";
 
 -Notification d'action ( suprimer, ajouter, modifer)
 
-- CSS
+- CSS :profil
+
+- Header x2 : model
 
 -->
